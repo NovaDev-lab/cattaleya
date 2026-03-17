@@ -12,7 +12,6 @@
 /* Hero - más contraste */
 .hero {
   min-height: 85vh;
-  min-height: 85dvh;
   display: flex;
   align-items: center;
   justify-content: center;
