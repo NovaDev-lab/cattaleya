@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producto | Cattaleya Joyería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/producto.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Cattaleya</a>
+      <nav class="nav" data-active="productos"></nav>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-height);">
+    <div class="container product-page" id="product-container">
+      <div class="product-loading" id="product-loading">Cargando...</div>
+      <div class="product-detail" id="product-detail" style="display: none;">
+        <div class="product-gallery">
+          <div class="product-slider">
+            <button class="slider-btn slider-btn--prev" aria-label="Anterior">‹</button>
+            <div class="slider-track">
+              <div class="slider-images" id="slider-images"></div>
+            </div>
+            <button class="slider-btn slider-btn--next" aria-label="Siguiente">›</button>
+          </div>
+          <div class="slider-dots" id="slider-dots"></div>
+        </div>
+        <div class="product-info">
+          <span class="product-info__category" id="product-category"></span>
+          <h1 class="product-info__title" id="product-title"></h1>
+          <p class="product-info__sku">SKU: <span id="product-sku"></span></p>
+          <p class="product-info__price" id="product-price"></p>
+          <p class="product-info__desc" id="product-desc"></p>
+          <div class="product-actions">
+            <div class="qty-selector">
+              <button type="button" class="qty-btn" id="qty-minus">−</button>
+              <input type="number" id="product-qty" value="1" min="1" max="10" readonly>
+              <button type="button" class="qty-btn" id="qty-plus">+</button>
+            </div>
+            <button class="btn btn--primary btn--add-cart" id="add-to-cart">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section section--alt" id="related-section" style="display: none;">
+      <div class="container">
+        <h2 class="section__title">Podría interesarte</h2>
+        <div class="products-grid" id="related-products"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast-cart" aria-live="polite">
+    <span class="toast__icon">✓</span>
+    <span class="toast__text">Añadido al carrito</span>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <h3 class="footer__brand">Cattaleya</h3>
+        <p class="footer__text">Joyería fina con diseño atemporal. Piezas únicas para momentos especiales.</p>
+      </div>
+      <div>
+        <h4 class="footer__brand" style="font-size: 1rem;">Enlaces</h4>
+        <nav class="footer__links">
+          <a href="index.html" class="footer__link">Inicio</a>
+          <a href="productos.html" class="footer__link">Productos</a>
+          <a href="contacto.html" class="footer__link">Contacto</a>
+          <a href="admin.html" class="footer__link">Admin</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="footer__brand" style="font-size: 1rem;">Síguenos</h4>
+        <nav class="footer__links">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
+          <a href="https://wa.me/5213121234567" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Cattaleya Joyería. Av. Tecnológico #9 interior 2, Lomas Vista Hermosa, 28016 Colima, Col.</p>
+    </div>
+  </footer>
+
+  <script src="js/data/products.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/producto.js"></script>
+</body>
+</html>

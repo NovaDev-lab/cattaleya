@@ -1,0 +1,49 @@
+/**
+ * Cattaleya - Página de Contacto
+ */
+
+.page-hero {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+}
+
+.cta-contact {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--color-primary);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+}
+
+.cta-contact__title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-md);
+}
+
+.cta-contact__text {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.btn--whatsapp {
+  background: #25D366;
+}
+
+.btn--whatsapp:hover {
+  background: #20BD5A;
+}
+
+@media (max-width: 480px) {
+  .contact-info__item {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .map-container {
+    height: 280px;
+  }
+  .cta-contact {
+    padding: var(--space-xl);
+  }
+}

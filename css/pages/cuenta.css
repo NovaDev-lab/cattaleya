@@ -1,0 +1,79 @@
+.cuenta-box {
+  max-width: 400px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: var(--space-2xl);
+  border: 1px solid var(--color-border);
+}
+
+.auth-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+.auth-tab {
+  flex: 1;
+  padding: var(--space-md);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: var(--color-cream);
+  transition: all var(--transition-fast);
+}
+.auth-tab.active {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.auth-form .btn {
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+.auth-form .btn--primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+}
+
+.auth-form .btn--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.cuenta-box .btn--outline {
+  display: inline-flex;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+.cuenta-info {
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .cuenta-box {
+    padding: var(--space-xl);
+    margin: 0 var(--space-md);
+  }
+  .auth-tabs {
+    flex-direction: column;
+  }
+}

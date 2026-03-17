@@ -1,0 +1,21 @@
+/**
+ * Cattaleya - Página de Productos
+ */
+
+.page-hero {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+}
+
+@media (max-width: 480px) {
+  .page-hero {
+    padding-top: var(--space-xl);
+  }
+  .categories-filter {
+    gap: var(--space-xs);
+  }
+  .category-btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+  }
+}

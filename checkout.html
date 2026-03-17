@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Cattaleya Joyería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/checkout.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Cattaleya</a>
+      <nav class="nav" data-active="productos"></nav>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-height);">
+    <div class="container" style="padding: var(--space-2xl) 0;">
+      <h1 class="page-title">Finalizar compra</h1>
+      <div id="checkout-redirect" style="text-align: center; padding: var(--space-2xl);">
+        <p>Carrito vacío. <a href="productos.html">Agregar productos</a></p>
+      </div>
+      <div class="checkout-layout" id="checkout-content" style="display: none;">
+        <div class="checkout-main">
+          <section class="checkout-section">
+            <h2>Entrega</h2>
+            <div class="delivery-options">
+              <label class="delivery-option">
+                <input type="radio" name="delivery" value="envio" checked>
+                <span>Envío a domicilio</span>
+              </label>
+              <label class="delivery-option">
+                <input type="radio" name="delivery" value="sucursal">
+                <span>Recoger en sucursal</span>
+              </label>
+            </div>
+            <div id="address-fields">
+              <input type="text" placeholder="Nombre completo *" id="checkout-name" required>
+              <input type="tel" placeholder="Teléfono *" id="checkout-phone" required>
+              <input type="email" placeholder="Email *" id="checkout-email" required>
+              <input type="text" placeholder="Calle y número *" id="checkout-calle" required>
+              <input type="text" placeholder="Colonia *" id="checkout-colonia" required>
+              <input type="text" placeholder="Código postal *" id="checkout-cp" required>
+              <input type="text" placeholder="Ciudad *" id="checkout-ciudad" required>
+              <input type="text" placeholder="Estado *" id="checkout-estado" required>
+            </div>
+          </section>
+        </div>
+        <aside class="checkout-sidebar">
+          <div class="checkout-summary" id="checkout-summary"></div>
+          <button class="btn btn--primary btn--block" id="btn-pagar">Ir a pagar</button>
+        </aside>
+      </div>
+      <div id="payment-step" style="display: none;">
+        <div class="payment-box">
+          <h2>Transferencia bancaria</h2>
+          <p>Realiza tu pago a la siguiente CLABE interbancaria:</p>
+          <div class="clabe-box">
+            <code id="clabe-number">0121800012345678901234</code>
+            <button class="btn btn--outline btn--sm" id="copy-clabe">Copiar</button>
+          </div>
+          <p class="payment-note">Banco: BBVA. Referencia: <strong id="ref-number"></strong></p>
+          <button class="btn btn--primary" id="btn-generar-ticket">Generar ticket de compra</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bottom">
+      <p>© 2025 Cattaleya Joyería. Av. Tecnológico #9 interior 2, Colima.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
