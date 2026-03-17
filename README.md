@@ -44,8 +44,27 @@ Cattaleya/
 - **Instagram**: Editar en `js/nav.js`
 - **Productos**: Editar `js/data/products.js`
 
-## Cómo ver
+## Cómo ver localmente
 
 ```bash
 npx serve .
 ```
+
+## Subir a Git (para mostrar al cliente)
+
+El repositorio ya está inicializado. Para subirlo a GitHub:
+
+1. Crea un repositorio nuevo en [GitHub](https://github.com/new) (ej: `cattaleya-joyeria`)
+2. Ejecuta:
+
+```bash
+cd C:\Users\Colibecas\Documents\Works\Cattaleya
+git remote add origin https://github.com/TU_USUARIO/cattaleya-joyeria.git
+git branch -M main
+git push -u origin main
+```
+
+Para desplegar en GitHub Pages (sitio público gratis):
+- Ve a Settings → Pages del repositorio
+- Source: Deploy from a branch
+- Branch: main, carpeta: / (root)
