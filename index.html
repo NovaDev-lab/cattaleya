@@ -8,11 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <header class="header" id="header">
@@ -33,7 +29,7 @@
       <div class="hero__content">
         <h1 class="hero__title">Joyas que cuentan tu historia</h1>
         <p class="hero__subtitle">Diseños únicos y atemporales en plata y oro. Cada pieza está creada con dedicación para acompañarte en los momentos más especiales.</p>
-        <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+        <div class="hero__actions">
           <a href="productos.html" class="btn btn--primary">Ver colección</a>
           <a href="contacto.html" class="btn btn--outline">Visítanos</a>
         </div>
@@ -101,7 +97,7 @@
             </div>
           </a>
         </div>
-        <div style="text-align: center; margin-top: var(--space-2xl);">
+        <div class="home-products__cta">
           <a href="productos.html" class="btn btn--primary">Ver todos los productos</a>
         </div>
       </div>
@@ -125,7 +121,7 @@
         <p class="footer__text">Joyería fina con diseño atemporal. Piezas únicas para momentos especiales.</p>
       </div>
       <div>
-        <h4 class="footer__brand" style="font-size: 1rem;">Enlaces</h4>
+        <h4 class="footer__heading">Enlaces</h4>
         <nav class="footer__links">
           <a href="index.html" class="footer__link">Inicio</a>
           <a href="productos.html" class="footer__link">Productos</a>
@@ -134,7 +130,7 @@
         </nav>
       </div>
       <div>
-        <h4 class="footer__brand" style="font-size: 1rem;">Síguenos</h4>
+        <h4 class="footer__heading">Síguenos</h4>
         <nav class="footer__links">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
           <a href="https://wa.me/5213121234567" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>

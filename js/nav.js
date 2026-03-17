@@ -1,15 +1,9 @@
 /**
- * Cattaleya - Navegación compartida con iconos y categorías
+ * Cattaleya - Navegación compartida (sin dropdown)
  */
 const NAV_CONFIG = {
   instagram: 'https://instagram.com',
-  whatsapp: 'https://wa.me/5213121234567',
-  categories: [
-    { id: 'anillos', name: 'Anillos' },
-    { id: 'collares', name: 'Collares' },
-    { id: 'aretes', name: 'Aretes' },
-    { id: 'pulseras', name: 'Pulseras' }
-  ]
+  whatsapp: 'https://wa.me/5213121234567'
 };
 
 function getNavHTML(activePage) {
@@ -18,23 +12,10 @@ function getNavHTML(activePage) {
   const cartIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';
   const userIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
 
-  const catLinks = NAV_CONFIG.categories.map(c => 
-    `<li><a href="productos.html?cat=${c.id}" class="nav__link nav__dropdown-link">${c.name}</a></li>`
-  ).join('');
-
   return `
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
     <ul class="nav__list" id="nav-list">
       <li><a href="index.html" class="nav__link ${activePage === 'inicio' ? 'active' : ''}">Inicio</a></li>
-      <li class="nav__dropdown">
-        <a href="productos.html" class="nav__link ${activePage === 'productos' ? 'active' : ''}">Productos ▾</a>
-        <ul class="nav__dropdown-menu">
-          <li><a href="productos.html" class="nav__dropdown-link">Todos</a></li>
-          ${catLinks}
-        </ul>
-      </li>
+      <li><a href="productos.html" class="nav__link ${activePage === 'productos' ? 'active' : ''}">Productos</a></li>
       <li><a href="contacto.html" class="nav__link ${activePage === 'contacto' ? 'active' : ''}">Contacto</a></li>
       <li class="nav__social">
         <a href="${NAV_CONFIG.instagram}" target="_blank" rel="noopener" class="nav__icon" aria-label="Instagram">${instaIcon}</a>
@@ -46,6 +27,9 @@ function getNavHTML(activePage) {
       </a></li>
       <li><a href="cuenta.html" class="nav__icon" aria-label="Mi cuenta">${userIcon}</a></li>
     </ul>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   `;
 }
 
@@ -61,25 +45,22 @@ function renderNav(activePage) {
 function initNavEvents() {
   const menuToggle = document.getElementById('menu-toggle');
   const navList = document.getElementById('nav-list');
-  if (menuToggle && navList) {
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('nav__list--open');
-      menuToggle.setAttribute('aria-label', navList.classList.contains('nav__list--open') ? 'Cerrar menú' : 'Abrir menú');
-    });
-    navList.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navList.classList.remove('nav__list--open'));
-    });
-    const dropdown = document.querySelector('.nav__dropdown');
-    if (dropdown) {
-      const productosLink = dropdown.querySelector('.nav__link');
-      productosLink.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          dropdown.classList.toggle('nav__dropdown--open');
-        }
-      });
-    }
-  }
+  if (!menuToggle || !navList) return;
+
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('nav__list--open');
+    const isOpen = navList.classList.contains('nav__list--open');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navList.classList.remove('nav__list--open'));
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) navList.classList.remove('nav__list--open');
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

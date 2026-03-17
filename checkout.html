@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Finaliza tu compra en Cattaleya Joyería.">
   <title>Checkout | Cattaleya Joyería</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/pages/checkout.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <header class="header" id="header">
@@ -21,10 +18,10 @@
     </div>
   </header>
 
-  <main style="padding-top: var(--header-height);">
-    <div class="container" style="padding: var(--space-2xl) 0;">
+  <main class="main-content">
+    <div class="container container--page">
       <h1 class="page-title">Finalizar compra</h1>
-      <div id="checkout-redirect" style="text-align: center; padding: var(--space-2xl);">
+      <div id="checkout-redirect" class="checkout-redirect">
         <p>Carrito vacío. <a href="productos.html">Agregar productos</a></p>
       </div>
       <div class="checkout-layout" id="checkout-content" style="display: none;">
@@ -58,7 +55,7 @@
           <button class="btn btn--primary btn--block" id="btn-pagar">Ir a pagar</button>
         </aside>
       </div>
-      <div id="payment-step" style="display: none;">
+      <div id="payment-step" class="payment-step" style="display: none;">
         <div class="payment-box">
           <h2>Transferencia bancaria</h2>
           <p>Realiza tu pago a la siguiente CLABE interbancaria:</p>
