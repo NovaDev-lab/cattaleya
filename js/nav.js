@@ -61,14 +61,24 @@ function initNavEvents() {
     const isOpen = navList.classList.contains('nav__list--open');
     menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
     menuToggle.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
   });
 
   navList.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navList.classList.remove('nav__list--open'));
+    link.addEventListener('click', () => {
+      navList.classList.remove('nav__list--open');
+      document.body.classList.remove('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menú');
+    });
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) navList.classList.remove('nav__list--open');
+    if (window.innerWidth > 768) {
+      navList.classList.remove('nav__list--open');
+      document.body.classList.remove('nav-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 

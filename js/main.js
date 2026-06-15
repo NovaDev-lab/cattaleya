@@ -15,10 +15,20 @@
     if (typeof STORE !== 'undefined' && !header.querySelector('.announcement-bar')) {
       const bar = document.createElement('div');
       bar.className = 'announcement-bar';
-      bar.innerHTML = `Envío gratis desde ${formatMXN(STORE.freeShippingThreshold)} a toda la república · Recoge en tienda · <a href="${getWhatsAppUrl('general')}" target="_blank" rel="noopener">Atención personalizada por WhatsApp</a>`;
+      bar.innerHTML = `Envío gratis desde ${formatMXN(STORE.freeShippingThreshold)} · Recoge en tienda · <a href="${getWhatsAppUrl('general')}" target="_blank" rel="noopener">WhatsApp</a>`;
       header.insertBefore(bar, header.firstChild);
-      document.documentElement.style.setProperty('--announcement-height', '36px');
-      document.documentElement.style.setProperty('--header-total-height', 'calc(var(--header-height) + var(--announcement-height))');
+
+      function syncAnnouncementHeight() {
+        const height = bar.offsetHeight;
+        document.documentElement.style.setProperty('--announcement-height', `${height}px`);
+        document.documentElement.style.setProperty('--header-total-height', `calc(var(--header-height) + ${height}px)`);
+      }
+
+      syncAnnouncementHeight();
+      window.addEventListener('resize', syncAnnouncementHeight, { passive: true });
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(syncAnnouncementHeight).observe(bar);
+      }
     }
   }
 })();
