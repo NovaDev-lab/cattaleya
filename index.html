@@ -55,7 +55,22 @@
           </div>
           <a href="productos.html" class="home-section__link home-section__link--inline">Ver todo</a>
         </header>
-        <div class="lookbook-grid" id="featured-products"></div>
+        <div class="featured-showcase">
+          <div class="featured-carousel" id="featured-carousel" aria-roledescription="carousel" aria-label="Piezas destacadas">
+            <div class="featured-carousel__viewport">
+              <div class="featured-carousel__track" id="featured-products"></div>
+            </div>
+            <div class="featured-carousel__footer">
+              <button type="button" class="featured-carousel__control" id="featured-prev" aria-label="Pieza anterior">
+                <span aria-hidden="true">←</span>
+              </button>
+              <div class="featured-carousel__dots" id="featured-dots" role="tablist" aria-label="Seleccionar pieza"></div>
+              <button type="button" class="featured-carousel__control" id="featured-next" aria-label="Siguiente pieza">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -143,5 +158,6 @@
   <script src="js/main.js"></script>
   <script src="js/hero-slider.js"></script>
   <script src="js/home.js"></script>
+  <script src="js/featured-carousel.js"></script>
 </body>
 </html>
