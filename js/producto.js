@@ -8,7 +8,6 @@
   const id = parseInt(params.get('id'), 10);
   const product = PRODUCTS.find(p => p.id === id);
 
-  const container = document.getElementById('product-container');
   const loading = document.getElementById('product-loading');
   const detail = document.getElementById('product-detail');
   const relatedSection = document.getElementById('related-section');
@@ -20,54 +19,80 @@
     return;
   }
 
-  const catNames = { anillos: 'Anillos', collares: 'Collares', aretes: 'Aretes', pulseras: 'Pulseras' };
+  const catLabel = CATEGORY_LABELS[product.category] || product.category;
 
   loading.style.display = 'none';
   detail.style.display = 'grid';
 
   document.title = `${product.name} | Cattaleya Joyería`;
-  document.getElementById('product-category').textContent = catNames[product.category] || product.category;
+
+  const breadcrumb = document.getElementById('product-breadcrumb');
+  if (breadcrumb) {
+    breadcrumb.innerHTML = `
+      <a href="productos.html">Catálogo</a>
+      <span>/</span>
+      <a href="productos.html?cat=${product.category}">${catLabel}</a>
+      <span>/</span>
+      <span aria-current="page">${product.name}</span>
+    `;
+  }
+
+  document.getElementById('product-category').textContent = catLabel;
+
+  const materialEl = document.getElementById('product-material');
+  if (materialEl && product.material) {
+    materialEl.textContent = MATERIAL_LABELS[product.material] || product.material;
+  }
+
+  const badgeEl = document.getElementById('product-badge');
+  if (badgeEl) {
+    badgeEl.style.display = product.personalized ? 'inline-block' : 'none';
+  }
+
+  const whatsappBox = document.getElementById('product-whatsapp');
+  if (whatsappBox) {
+    whatsappBox.style.display = product.personalized ? 'flex' : 'none';
+    const waLink = document.getElementById('product-whatsapp-link');
+    if (waLink) {
+      const msg = `${STORE.whatsappMessages.personalized} — ${product.name}`;
+      waLink.href = `https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(msg)}`;
+    }
+  }
+
   document.getElementById('product-title').textContent = product.name;
   document.getElementById('product-sku').textContent = product.sku;
   const priceEl = document.getElementById('product-price');
+  const qtyInput = document.getElementById('product-qty');
+
   function updatePrice() {
     const qty = parseInt(qtyInput.value, 10);
-    priceEl.textContent = `$${(product.price * qty).toLocaleString('es-MX')} MXN`;
+    priceEl.textContent = formatMXN(product.price * qty);
   }
+
   document.getElementById('product-desc').textContent = product.description;
 
-  const sliderImages = document.getElementById('slider-images');
-  const sliderDots = document.getElementById('slider-dots');
-  product.images.forEach((src, i) => {
-    sliderImages.innerHTML += `<img src="${src}" alt="${product.name} ${i + 1}">`;
-    const dot = document.createElement('button');
-    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Imagen ${i + 1}`);
-    dot.addEventListener('click', () => goToSlide(i));
-    sliderDots.appendChild(dot);
-  });
-
-  let currentSlide = 0;
-  const totalSlides = product.images.length;
-
-  function goToSlide(i) {
-    currentSlide = (i + totalSlides) % totalSlides;
-    sliderImages.style.transform = `translateX(-${currentSlide * 100}%)`;
-    sliderDots.querySelectorAll('.slider-dot').forEach((d, j) => d.classList.toggle('active', j === currentSlide));
+  const shippingEl = document.getElementById('product-shipping');
+  if (shippingEl) {
+    shippingEl.innerHTML = product.price >= STORE.freeShippingThreshold
+      ? 'Este producto califica para <strong>envío nacional gratis</strong>.'
+      : `Envío nacional gratis en compras desde ${formatMXN(STORE.freeShippingThreshold)}. También envío local en Colima y recoger en tienda.`;
   }
 
-  document.querySelector('.slider-btn--prev').addEventListener('click', () => goToSlide(currentSlide - 1));
-  document.querySelector('.slider-btn--next').addEventListener('click', () => goToSlide(currentSlide + 1));
+  const galleryStack = document.getElementById('product-gallery-stack');
+  if (galleryStack) {
+    galleryStack.innerHTML = product.images.map((src, i) => `
+      <figure class="product-gallery__frame">
+        <img src="${src}" alt="${product.name} — imagen ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}">
+      </figure>
+    `).join('');
+  }
 
-  const qtyInput = document.getElementById('product-qty');
   document.getElementById('qty-minus').addEventListener('click', () => {
-    const v = Math.max(1, parseInt(qtyInput.value, 10) - 1);
-    qtyInput.value = v;
+    qtyInput.value = Math.max(1, parseInt(qtyInput.value, 10) - 1);
     updatePrice();
   });
   document.getElementById('qty-plus').addEventListener('click', () => {
-    const v = Math.min(10, parseInt(qtyInput.value, 10) + 1);
-    qtyInput.value = v;
+    qtyInput.value = Math.min(10, parseInt(qtyInput.value, 10) + 1);
     updatePrice();
   });
   qtyInput.addEventListener('change', updatePrice);
@@ -86,30 +111,13 @@
       toast.classList.add('toast--visible');
       setTimeout(() => toast.classList.remove('toast--visible'), 2500);
     }
-
-    if (relatedSection.offsetParent) {
-      relatedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   });
 
   updatePrice();
 
   const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
-  if (related.length > 0) {
+  if (related.length > 0 && typeof renderLookbookCard === 'function') {
     relatedSection.style.display = 'block';
-    related.forEach(p => {
-      relatedGrid.innerHTML += `
-        <a href="producto.html?id=${p.id}" class="product-card">
-          <div class="product-card__image">
-            <img src="${p.images[0]}" alt="${p.name}" width="400" height="400" loading="lazy">
-          </div>
-          <div class="product-card__content">
-            <span class="product-card__category">${catNames[p.category]}</span>
-            <h3 class="product-card__title">${p.name}</h3>
-            <span class="product-card__price">$${p.price.toLocaleString('es-MX')} MXN</span>
-          </div>
-        </a>
-      `;
-    });
+    relatedGrid.innerHTML = related.map(renderLookbookCard).join('');
   }
 })();

@@ -15,7 +15,7 @@ function saveCart(cart) {
 }
 
 function getCartTotal(cart) {
-  return cart.reduce((sum, i) => sum + i.price * (i.qty || 1), 0);
+  return typeof getSubtotal === 'function' ? getSubtotal(cart) : cart.reduce((sum, i) => sum + i.price * (i.qty || 1), 0);
 }
 
 function getUser() {

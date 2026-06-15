@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cattaleya Joyería - Piezas únicas de joyería fina en Colima. Anillos, collares, aretes y más. Diseño minimalista y elegante.">
+  <meta name="description" content="Cattaleya Joyería - Plata .925, acero y oro. Aretes, collares, anillos y piezas personalizadas en Colima. Envío gratis desde $999.">
   <title>Cattaleya Joyería | Joyería Fina en Colima</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,96 +19,90 @@
   </header>
 
   <main>
-    <section class="hero hero--slider">
+    <section class="hero hero--slider hero--home">
       <div class="hero-slider">
-        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1080&fit=crop);"></div>
-        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1920&h=1080&fit=crop);"></div>
-        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1920&h=1080&fit=crop);"></div>
+        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1200&fit=crop);"></div>
+        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1920&h=1200&fit=crop);"></div>
+        <div class="hero-slider__slide" style="background-image: url(https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1920&h=1200&fit=crop);"></div>
       </div>
       <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <h1 class="hero__title">Joyas que cuentan tu historia</h1>
-        <p class="hero__subtitle">Diseños únicos y atemporales en plata y oro. Cada pieza está creada con dedicación para acompañarte en los momentos más especiales.</p>
+      <div class="hero__content hero__content--home">
+        <p class="hero__eyebrow">Joyería · Colima</p>
+        <h1 class="hero__title">Piezas que elevan<br>cada momento</h1>
+        <p class="hero__subtitle">Plata .925, acero y oro. Diseño limpio, acabados impecables.</p>
         <div class="hero__actions">
-          <a href="productos.html" class="btn btn--primary">Ver colección</a>
-          <a href="contacto.html" class="btn btn--outline">Visítanos</a>
+          <a href="#colecciones" class="btn btn--primary btn--hero">Explorar colecciones</a>
         </div>
       </div>
     </section>
 
-    <section class="features-strip">
-      <div class="feature-item">
-        <div class="feature-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 12l10 10 10-10L12 2z"/><path d="M12 2v20M2 12h20"/></svg></div>
-        <h3 class="feature-item__title">Materiales nobles</h3>
-        <p class="feature-item__text">Plata 925 y oro de la más alta calidad</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
-        <h3 class="feature-item__title">Hecho a mano</h3>
-        <p class="feature-item__text">Cada pieza es única y artesanal</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3 class="feature-item__title">Garantía</h3>
-        <p class="feature-item__text">Compromiso con la satisfacción</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h3 class="feature-item__title">Envíos seguros</h3>
-        <p class="feature-item__text">Entrega a todo México</p>
+    <section class="home-categories" id="colecciones">
+      <div class="container">
+        <h2 class="home-section__title home-section__title--solo">Colecciones</h2>
+        <div class="category-grid" id="home-categories"></div>
+        <p class="home-section__link">
+          <a href="productos.html">Ver catálogo completo →</a>
+        </p>
       </div>
     </section>
 
-    <section class="section section--alt">
+    <section class="section home-featured">
       <div class="container">
-        <header class="section__header">
-          <h2 class="section__title">Descubre nuestra colección</h2>
-          <p class="section__subtitle">Piezas seleccionadas que combinan tradición y diseño contemporáneo. Perfectas para regalar o para ti.</p>
+        <header class="home-section__header home-section__header--row">
+          <div>
+            <span class="section-eyebrow">Catálogo</span>
+            <h2 class="home-section__title">Piezas destacadas</h2>
+          </div>
+          <a href="productos.html" class="home-section__link home-section__link--inline">Ver todo</a>
         </header>
-        <div class="products-grid" id="featured-products">
-          <a href="producto.html?id=1" class="product-card">
-            <div class="product-card__image">
-              <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop" alt="Anillo de plata" width="400" height="400" loading="lazy">
-            </div>
-            <div class="product-card__content">
-              <span class="product-card__category">Anillos</span>
-              <h3 class="product-card__title">Anillo Luna</h3>
-              <span class="product-card__price">$1,850 MXN</span>
-            </div>
-          </a>
-          <a href="producto.html?id=4" class="product-card">
-            <div class="product-card__image">
-              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop" alt="Collar delicado" width="400" height="400" loading="lazy">
-            </div>
-            <div class="product-card__content">
-              <span class="product-card__category">Collares</span>
-              <h3 class="product-card__title">Collar Estrella</h3>
-              <span class="product-card__price">$2,450 MXN</span>
-            </div>
-          </a>
-          <a href="producto.html?id=7" class="product-card">
-            <div class="product-card__image">
-              <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop" alt="Aretes minimalistas" width="400" height="400" loading="lazy">
-            </div>
-            <div class="product-card__content">
-              <span class="product-card__category">Aretes</span>
-              <h3 class="product-card__title">Aretes Flor</h3>
-              <span class="product-card__price">$1,250 MXN</span>
-            </div>
-          </a>
-        </div>
-        <div class="home-products__cta">
-          <a href="productos.html" class="btn btn--primary">Ver todos los productos</a>
+        <div class="lookbook-grid" id="featured-products"></div>
+      </div>
+    </section>
+
+    <section class="home-editorial">
+      <div class="home-editorial__media">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&h=1100&fit=crop" alt="Collar personalizado Cattaleya" width="900" height="1100" loading="lazy">
+      </div>
+      <div class="home-editorial__content">
+        <span class="section-eyebrow">A tu medida</span>
+        <h2 class="home-section__title">Collares y piezas personalizadas</h2>
+        <p class="home-editorial__text">Cuéntanos tu idea. Te acompañamos en cada detalle — diseño, material y acabado — con atención directa por WhatsApp.</p>
+        <a href="https://wa.me/5213121234567?text=Hola,%20me%20gustaría%20cotizar%20una%20pieza%20personalizada" target="_blank" rel="noopener" class="btn btn--outline">Consultar por WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="home-store">
+      <div class="container">
+        <div class="home-store__inner">
+          <div class="home-store__content">
+            <span class="section-eyebrow">Tienda física</span>
+            <h2 class="home-section__title">Visítanos en Colima</h2>
+            <p class="home-store__text">Av. Tecnológico #9 interior 2, Lomas Vista Hermosa. Lun–Sáb 11:00 am – 8:00 pm.</p>
+          </div>
+          <a href="contacto.html" class="btn btn--outline">Cómo llegar</a>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="features-strip features-strip--bottom" aria-label="Beneficios de compra">
       <div class="container">
-        <div class="cta-banner">
-          <h2 class="cta-banner__title">Visita nuestra tienda</h2>
-          <p class="cta-banner__text">Te esperamos en Av. Tecnológico #9 interior 2, Lomas Vista Hermosa. Conoce nuestras piezas en persona y encuentra la joya perfecta.</p>
-          <a href="contacto.html" class="btn btn--primary">Cómo llegar</a>
+        <div class="features-strip__grid">
+          <div class="feature-item">
+            <h3 class="feature-item__title">Envío gratis desde $999</h3>
+            <p class="feature-item__text">A toda la república mexicana</p>
+          </div>
+          <div class="feature-item">
+            <h3 class="feature-item__title">Recoge en tienda</h3>
+            <p class="feature-item__text">Efectivo, transferencia o tarjeta</p>
+          </div>
+          <div class="feature-item">
+            <h3 class="feature-item__title">Plata .925 · Acero · Oro</h3>
+            <p class="feature-item__text">Materiales seleccionados</p>
+          </div>
+          <div class="feature-item">
+            <h3 class="feature-item__title">Atención personalizada</h3>
+            <p class="feature-item__text">Piezas a medida vía WhatsApp</p>
+          </div>
         </div>
       </div>
     </section>
@@ -118,7 +112,7 @@
     <div class="footer__grid">
       <div>
         <h3 class="footer__brand">Cattaleya</h3>
-        <p class="footer__text">Joyería fina con diseño atemporal. Piezas únicas para momentos especiales.</p>
+        <p class="footer__text">Joyería en plata .925, acero y oro. Envío gratis desde $999 a toda la república.</p>
       </div>
       <div>
         <h4 class="footer__heading">Enlaces</h4>
@@ -126,7 +120,6 @@
           <a href="index.html" class="footer__link">Inicio</a>
           <a href="productos.html" class="footer__link">Productos</a>
           <a href="contacto.html" class="footer__link">Contacto</a>
-          <a href="admin.html" class="footer__link">Admin</a>
         </nav>
       </div>
       <div>
@@ -142,8 +135,13 @@
     </div>
   </footer>
 
+  <script src="js/data/store.js"></script>
+  <script src="js/data/products.js"></script>
+  <script src="js/data/home.js"></script>
+  <script src="js/product-cards.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
   <script src="js/hero-slider.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

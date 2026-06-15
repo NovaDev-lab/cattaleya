@@ -1,48 +1,50 @@
 # Cattaleya Joyería
 
-Sitio web para joyería con diseño minimalista, paleta rosa pastel y alto contraste.
+Preview estático de tienda de joyería (destino: Shopify). Paleta neutra — beige, blanco, hueso — inspirada en referencias como quererlo.com, lavetem.com y rossamagenta.com.
 
 ## Estructura
 
 ```
 Cattaleya/
-├── index.html          # Inicio
-├── productos.html      # Catálogo con filtros
-├── producto.html       # Detalle de producto (slider, SKU, añadir al carrito)
-├── carrito.html        # Carrito de compras
-├── checkout.html       # Checkout (envío/recoger, CLABE, ticket)
-├── cuenta.html         # Login/registro de usuarios
-├── contacto.html       # Ubicación, horarios, redes
-├── css/
+├── index.html
+├── productos.html
+├── producto.html
+├── carrito.html
+├── checkout.html
+├── contacto.html
+├── css/app.css
 ├── js/
-│   ├── data/products.js # Catálogo de productos
-│   ├── nav.js          # Navegación con iconos y categorías
-│   ├── cart.js         # Carrito y usuarios
-│   ├── producto.js     # Página detalle
-│   ├── carrito.js      # Página carrito
-│   ├── checkout.js     # Checkout y ticket
-│   └── cuenta.js       # Autenticación
-└── assets/
+│   ├── data/
+│   │   ├── store.js      # Envíos, pagos, WhatsApp
+│   │   └── products.js   # Catálogo y categorías
+│   ├── nav.js
+│   ├── cart.js
+│   ├── checkout.js
+│   └── ...
 ```
 
-## Funcionalidades
+## Negocio (configurado en preview)
 
-- **Navegación**: Menú con categorías desplegables, iconos Instagram/WhatsApp, carrito, cuenta
-- **Productos**: Filtro por categoría, páginas detalladas con slider de imágenes, SKU, precio, añadir al carrito
-- **Carrito**: Añadir, modificar cantidad, eliminar
-- **Checkout**: Envío a domicilio o recoger en sucursal, CLABE para pago, generación de ticket
-- **Usuarios**: Registro e inicio de sesión (localStorage, demo)
+### Envíos
+- **Gratis** desde **$999 MXN** a toda la República Mexicana
+- **Envío local Colima** con costo adicional
+- **Recoger en tienda** sin costo (Av. Tecnológico #9 interior 2, Colima)
 
-## Ubicación y horarios
+### Pagos
+- **En tienda:** efectivo, transferencia
+- **En línea (Shopify):** tarjeta, transferencia
 
-- **Dirección**: Av. Tecnológico #9 interior 2, Lomas Vista Hermosa, 28016 Colima, Col.
-- **Horarios**: Lunes a Sábado 11:00 am - 8:00 pm. Domingos cerrado.
+### WhatsApp
+Atención personalizada para collares personalizados, cotizaciones y dudas.
+
+### Catálogo
+Aretes, collares (incl. personalizados), anillos, pulseras, brazaletes, earcuffs/simulaciones, perclingas, alajeros, aretes de fiesta, juegos/sets en plata .925, blusas, mascaradas. Materiales: plata .925, acero, oro.
 
 ## Personalización
 
-- **WhatsApp**: Editar en `js/nav.js` y enlaces
-- **Instagram**: Editar en `js/nav.js`
-- **Productos**: Editar `js/data/products.js`
+- **Envíos y umbrales:** `js/data/store.js`
+- **Productos y categorías:** `js/data/products.js`
+- **WhatsApp / Instagram:** `js/data/store.js` y `js/nav.js`
 
 ## Cómo ver localmente
 
@@ -50,21 +52,8 @@ Cattaleya/
 npx serve .
 ```
 
-## Subir a Git (para mostrar al cliente)
+## Referencias visuales
 
-El repositorio ya está inicializado. Para subirlo a GitHub:
-
-1. Crea un repositorio nuevo en [GitHub](https://github.com/new) (ej: `cattaleya-joyeria`)
-2. Ejecuta:
-
-```bash
-cd C:\Users\Colibecas\Documents\Works\Cattaleya
-git remote add origin https://github.com/TU_USUARIO/cattaleya-joyeria.git
-git branch -M main
-git push -u origin main
-```
-
-Para desplegar en GitHub Pages (sitio público gratis):
-- Ve a Settings → Pages del repositorio
-- Source: Deploy from a branch
-- Branch: main, carpeta: / (root)
+- quererlo.com
+- lavetem.com
+- rossamagenta.com

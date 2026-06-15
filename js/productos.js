@@ -1,64 +1,130 @@
 /**
- * Cattaleya - Productos: datos, render y filtro
+ * Cattaleya - Catálogo con filtros horizontales
  */
-const PRODUCTS = [
-  { id: 1, cat: 'anillos', name: 'Anillo Luna', price: '$1,850 MXN', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop' },
-  { id: 2, cat: 'anillos', name: 'Anillo Sol', price: '$2,150 MXN', img: 'https://images.unsplash.com/photo-1596944924376-1f8ad3987622?w=400&h=400&fit=crop' },
-  { id: 3, cat: 'anillos', name: 'Anillo Estrella', price: '$1,650 MXN', img: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop' },
-  { id: 4, cat: 'collares', name: 'Collar Estrella', price: '$2,450 MXN', img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop' },
-  { id: 5, cat: 'collares', name: 'Collar Luna', price: '$2,850 MXN', img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' },
-  { id: 6, cat: 'collares', name: 'Collar Perla', price: '$3,250 MXN', img: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&h=400&fit=crop' },
-  { id: 7, cat: 'aretes', name: 'Aretes Flor', price: '$1,250 MXN', img: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=400&fit=crop' },
-  { id: 8, cat: 'aretes', name: 'Aretes Hoop', price: '$1,450 MXN', img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop' },
-  { id: 9, cat: 'aretes', name: 'Aretes Gota', price: '$1,350 MXN', img: 'https://images.unsplash.com/photo-1611652022419-a9419f74343a?w=400&h=400&fit=crop' },
-  { id: 10, cat: 'pulseras', name: 'Pulsera Elegante', price: '$1,550 MXN', img: 'https://images.unsplash.com/photo-1611652022419-a9419f74343a?w=400&h=400&fit=crop' },
-  { id: 11, cat: 'pulseras', name: 'Pulsera Infinito', price: '$1,750 MXN', img: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop' },
-  { id: 12, cat: 'pulseras', name: 'Pulsera Delicada', price: '$1,450 MXN', img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop' }
-];
-
-const CAT_LABELS = { anillos: 'Anillos', collares: 'Collares', aretes: 'Aretes', pulseras: 'Pulseras' };
-
-function card(p) {
-  return `<a href="producto.html?id=${p.id}" class="product-card" data-category="${p.cat}">
-    <div class="product-card__image"><img src="${p.img}" alt="${p.name}" width="400" height="400" loading="lazy"></div>
-    <div class="product-card__content">
-      <span class="product-card__category">${CAT_LABELS[p.cat]}</span>
-      <h3 class="product-card__title">${p.name}</h3>
-      <span class="product-card__price">${p.price}</span>
-    </div>
-  </a>`;
-}
-
 (function() {
+  'use strict';
+
   const grid = document.getElementById('products-grid');
-  const filters = document.getElementById('categories-filter');
-  if (!grid || !filters) return;
+  const categoryNav = document.getElementById('categories-filter');
+  const materialNav = document.getElementById('material-filter');
+  const countEl = document.getElementById('catalog-count');
+  const labelEl = document.getElementById('catalog-active-label');
+  const emptyEl = document.getElementById('catalog-empty');
+  const clearBtn = document.getElementById('filter-clear');
+  const filtersBar = document.getElementById('catalog-filters');
 
-  const cat = new URLSearchParams(location.search).get('cat');
-  const valid = ['anillos','collares','aretes','pulseras'].includes(cat);
+  if (!grid || !categoryNav || !materialNav || typeof PRODUCTS === 'undefined') return;
 
-  if (valid && 'scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const categoryIds = CATEGORIES.map(c => c.id);
+  const materialIds = Object.keys(MATERIAL_LABELS);
 
-  grid.innerHTML = PRODUCTS.map(card).join('');
+  const params = new URLSearchParams(location.search);
+  let activeCategory = categoryIds.includes(params.get('cat') || '') ? params.get('cat') : 'todos';
+  let activeMaterial = materialIds.includes(params.get('material') || '') ? params.get('material') : 'todos';
 
-  function filter(selected) {
-    filters.querySelectorAll('.category-btn').forEach(b => b.classList.toggle('active', b.dataset.category === selected));
-    grid.querySelectorAll('.product-card').forEach(c => {
-      c.hidden = selected !== 'todos' && c.dataset.category !== selected;
+  if (params.get('cat') && 'scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  categoryNav.innerHTML = `
+    <button type="button" class="catalog-chip catalog-chip--cat" data-filter="category" data-value="todos">Todo</button>
+    ${CATEGORIES.map(c => `
+      <button type="button" class="catalog-chip catalog-chip--cat" data-filter="category" data-value="${c.id}">${c.name}</button>
+    `).join('')}
+  `;
+
+  materialNav.innerHTML = `
+    <button type="button" class="catalog-chip catalog-chip--mat" data-filter="material" data-value="todos">Todos</button>
+    ${materialIds.map(id => `
+      <button type="button" class="catalog-chip catalog-chip--mat" data-filter="material" data-value="${id}">${MATERIAL_LABELS[id]}</button>
+    `).join('')}
+  `;
+
+  grid.innerHTML = PRODUCTS.map(renderLookbookCard).join('');
+
+  function updateUrl() {
+    const next = new URLSearchParams();
+    if (activeCategory !== 'todos') next.set('cat', activeCategory);
+    if (activeMaterial !== 'todos') next.set('material', activeMaterial);
+    const qs = next.toString();
+    const url = qs ? `${location.pathname}?${qs}` : location.pathname;
+    history.replaceState(null, '', url);
+  }
+
+  function scrollActiveChip(container) {
+    const active = container.querySelector('.catalog-chip.active');
+    if (!active || !active.scrollIntoView) return;
+    active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  function updateUI() {
+    categoryNav.querySelectorAll('[data-filter="category"]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.value === activeCategory);
+    });
+    materialNav.querySelectorAll('[data-filter="material"]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.value === activeMaterial);
+    });
+
+    let visible = 0;
+    grid.querySelectorAll('.lookbook-item').forEach(item => {
+      const catOk = activeCategory === 'todos' || item.dataset.category === activeCategory;
+      const matOk = activeMaterial === 'todos' || item.dataset.material === activeMaterial;
+      const show = catOk && matOk;
+      item.hidden = !show;
+      if (show) visible += 1;
+    });
+
+    const hasFilters = activeCategory !== 'todos' || activeMaterial !== 'todos';
+    if (clearBtn) clearBtn.hidden = !hasFilters;
+    if (filtersBar) filtersBar.classList.toggle('catalog-filters--active', hasFilters);
+
+    const catLabel = activeCategory === 'todos' ? null : CATEGORY_LABELS[activeCategory];
+    const matLabel = activeMaterial === 'todos' ? null : MATERIAL_LABELS[activeMaterial];
+
+    if (labelEl) {
+      if (!hasFilters) labelEl.textContent = 'Todas las piezas';
+      else if (catLabel && matLabel) labelEl.textContent = `${catLabel} · ${matLabel}`;
+      else labelEl.textContent = catLabel || matLabel || 'Todas las piezas';
+    }
+
+    if (countEl) {
+      countEl.textContent = visible === 1 ? '1 pieza' : `${visible} piezas`;
+    }
+
+    if (emptyEl) emptyEl.hidden = visible > 0;
+
+    updateUrl();
+  }
+
+  function handleFilterClick(e) {
+    const btn = e.target.closest('.catalog-chip');
+    if (!btn) return;
+
+    if (btn.dataset.filter === 'category') activeCategory = btn.dataset.value;
+    if (btn.dataset.filter === 'material') activeMaterial = btn.dataset.value;
+    updateUI();
+
+    if (btn.dataset.filter === 'category') scrollActiveChip(categoryNav);
+  }
+
+  categoryNav.addEventListener('click', handleFilterClick);
+  materialNav.addEventListener('click', handleFilterClick);
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeCategory = 'todos';
+      activeMaterial = 'todos';
+      updateUI();
     });
   }
 
-  if (valid) {
-    filter(cat);
-    requestAnimationFrame(() => window.scrollTo(0, 0));
-  }
-
   window.addEventListener('pageshow', e => {
-    if (e.persisted && location.search.includes('cat=')) window.scrollTo(0, 0);
+    if (e.persisted && location.search) window.scrollTo(0, 0);
   });
 
-  filters.addEventListener('click', e => {
-    const btn = e.target.closest('.category-btn');
-    if (btn) filter(btn.dataset.category);
-  });
+  updateUI();
+  if (params.get('cat')) {
+    requestAnimationFrame(() => {
+      scrollActiveChip(categoryNav);
+      window.scrollTo(0, 0);
+    });
+  }
 })();

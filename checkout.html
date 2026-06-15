@@ -30,12 +30,25 @@
             <h2>Entrega</h2>
             <div class="delivery-options">
               <label class="delivery-option">
-                <input type="radio" name="delivery" value="envio" checked>
-                <span>Envío a domicilio</span>
+                <input type="radio" name="delivery" value="nacional" checked>
+                <span>
+                  Envío a domicilio (República Mexicana)
+                  <span class="delivery-option__note">Gratis en compras desde $999</span>
+                </span>
               </label>
               <label class="delivery-option">
-                <input type="radio" name="delivery" value="sucursal">
-                <span>Recoger en sucursal</span>
+                <input type="radio" name="delivery" value="local-colima">
+                <span>
+                  Envío local Colima
+                  <span class="delivery-option__note">Costo adicional · Entrega en zona Colima</span>
+                </span>
+              </label>
+              <label class="delivery-option">
+                <input type="radio" name="delivery" value="tienda">
+                <span>
+                  Recoger en tienda
+                  <span class="delivery-option__note">Av. Tecnológico #9 interior 2, Colima · Sin costo</span>
+                </span>
               </label>
             </div>
             <div id="address-fields">
@@ -48,22 +61,68 @@
               <input type="text" placeholder="Ciudad *" id="checkout-ciudad" required>
               <input type="text" placeholder="Estado *" id="checkout-estado" required>
             </div>
+            <div id="contact-fields" style="display: none;">
+              <input type="text" placeholder="Nombre completo *" id="pickup-name">
+              <input type="tel" placeholder="Teléfono *" id="pickup-phone">
+              <p class="info-box">Te avisaremos cuando tu pedido esté listo para recoger. Horario: Lun–Sáb 11:00 am – 8:00 pm.</p>
+            </div>
+          </section>
+          <section class="checkout-section">
+            <h2>Forma de pago</h2>
+            <div class="payment-methods">
+              <label class="payment-method">
+                <input type="radio" name="payment" value="tarjeta" checked>
+                <div>
+                  <div class="payment-method__title">Tarjeta</div>
+                  <div class="payment-method__desc">Pago seguro con tarjeta en Shopify (preview)</div>
+                </div>
+              </label>
+              <label class="payment-method">
+                <input type="radio" name="payment" value="transferencia">
+                <div>
+                  <div class="payment-method__title">Transferencia bancaria</div>
+                  <div class="payment-method__desc">Transferencia SPEI antes de enviar tu pedido</div>
+                </div>
+              </label>
+              <label class="payment-method">
+                <input type="radio" name="payment" value="tienda">
+                <div>
+                  <div class="payment-method__title">Pago en tienda</div>
+                  <div class="payment-method__desc">Efectivo o transferencia al recoger en Colima</div>
+                </div>
+              </label>
+            </div>
           </section>
         </div>
         <aside class="checkout-sidebar">
           <div class="checkout-summary" id="checkout-summary"></div>
-          <button class="btn btn--primary btn--block" id="btn-pagar">Ir a pagar</button>
+          <button class="btn btn--primary btn--block" id="btn-pagar">Continuar</button>
         </aside>
       </div>
       <div id="payment-step" class="payment-step" style="display: none;">
         <div class="payment-box">
-          <h2>Transferencia bancaria</h2>
-          <p>Realiza tu pago a la siguiente CLABE interbancaria:</p>
-          <div class="clabe-box">
-            <code id="clabe-number">0121800012345678901234</code>
-            <button class="btn btn--outline btn--sm" id="copy-clabe">Copiar</button>
+          <h2 id="payment-title">Pago</h2>
+          <p id="payment-desc"></p>
+          <p><strong>Total:</strong> <span id="payment-total"></span></p>
+          <p><strong>Referencia:</strong> <span id="payment-ref"></span></p>
+          <div id="transfer-block" style="display: none;">
+            <div class="clabe-box">
+              <code id="clabe-number">0121800012345678901234</code>
+              <button class="btn btn--outline btn--sm" id="copy-clabe">Copiar</button>
+            </div>
+            <p class="payment-note">Banco: BBVA. Usa la referencia al transferir.</p>
           </div>
-          <p class="payment-note">Banco: BBVA. Referencia: <strong id="ref-number"></strong></p>
+          <div id="store-payment-block" style="display: none;">
+            <div class="info-box">
+              <p>Paga al recoger en tienda con <strong>efectivo</strong> o <strong>transferencia</strong>.</p>
+              <p>Av. Tecnológico #9 interior 2, Lomas Vista Hermosa, 28016 Colima, Col.</p>
+            </div>
+          </div>
+          <div id="card-payment-block" style="display: none;">
+            <div class="info-box">
+              <p>En la tienda Shopify finalizarás el pago con tarjeta de débito o crédito de forma segura.</p>
+            </div>
+          </div>
           <button class="btn btn--primary" id="btn-generar-ticket">Generar ticket de compra</button>
         </div>
       </div>
@@ -76,6 +135,7 @@
     </div>
   </footer>
 
+  <script src="js/data/store.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
