@@ -19,12 +19,13 @@
   </header>
 
   <main class="main-content contact-page">
-    <section class="contact-hero">
-      <div class="container">
-        <h1 class="contact-hero__title">Contacto</h1>
-        <p class="contact-hero__text">Visítanos en Colima, escríbenos por WhatsApp o recibe tu pedido en cualquier parte de México.</p>
-      </div>
-    </section>
+    <div class="container">
+      <header class="contact-intro">
+        <p class="contact-intro__eyebrow">Cattaleya</p>
+        <h1 class="contact-intro__title">Contacto</h1>
+        <p class="contact-intro__desc">Visítanos en Colima, escríbenos por WhatsApp o recibe tu pedido en cualquier parte de México.</p>
+      </header>
+    </div>
 
     <div class="contact-map">
       <iframe
@@ -38,45 +39,72 @@
 
     <section class="contact-body">
       <div class="container">
-        <div class="contact-cards">
-          <article class="contact-card">
-            <p class="contact-card__label">Ubicación</p>
-            <h2 class="contact-card__title">Tienda en Colima</h2>
-            <p class="contact-card__text">Av. Tecnológico #9 interior 2<br>Lomas Vista Hermosa, 28016 Colima, Col.</p>
-            <a href="https://www.google.com/maps/search/Av+Tecnol%C3%B3gico+9+interior+2+Colima" target="_blank" rel="noopener noreferrer" class="contact-card__link">Abrir en Maps</a>
-          </article>
+        <div class="contact-showcase">
+          <div class="contact-carousel" id="contact-carousel" aria-roledescription="carousel" aria-label="Información de contacto">
+            <div class="contact-carousel__viewport">
+              <div class="contact-carousel__track" id="contact-cards">
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Ubicación</p>
+                    <h2 class="contact-card__title">Tienda en Colima</h2>
+                    <p class="contact-card__text">Av. Tecnológico #9 interior 2<br>Lomas Vista Hermosa, 28016 Colima, Col.</p>
+                    <a href="https://www.google.com/maps/search/Av+Tecnol%C3%B3gico+9+interior+2+Colima" target="_blank" rel="noopener noreferrer" class="contact-card__link">Abrir en Maps</a>
+                  </article>
+                </div>
 
-          <article class="contact-card">
-            <p class="contact-card__label">Horario</p>
-            <h2 class="contact-card__title">Cuándo visitarnos</h2>
-            <p class="contact-card__text">Lunes a Sábado: 11:00 am – 8:00 pm<br>Domingos: Cerrado</p>
-          </article>
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Horario</p>
+                    <h2 class="contact-card__title">Cuándo visitarnos</h2>
+                    <p class="contact-card__text">Lunes a Sábado: 11:00 am – 8:00 pm<br>Domingos: Cerrado</p>
+                  </article>
+                </div>
 
-          <article class="contact-card">
-            <p class="contact-card__label">Envíos</p>
-            <h2 class="contact-card__title">A domicilio o en tienda</h2>
-            <p class="contact-card__text">Envío gratis desde $999 a toda la república. Envío local en Colima con costo adicional. Recoge en tienda sin costo.</p>
-          </article>
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Envíos</p>
+                    <h2 class="contact-card__title">A domicilio o en tienda</h2>
+                    <p class="contact-card__text">Envío gratis desde $999 a toda la república. Envío local en Colima con costo adicional. Recoge en tienda sin costo.</p>
+                  </article>
+                </div>
 
-          <article class="contact-card">
-            <p class="contact-card__label">Pagos</p>
-            <h2 class="contact-card__title">Formas de pago</h2>
-            <p class="contact-card__text">En tienda: efectivo y transferencia. En línea: tarjeta y transferencia vía Shopify.</p>
-          </article>
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Pagos</p>
+                    <h2 class="contact-card__title">Formas de pago</h2>
+                    <p class="contact-card__text">En tienda: efectivo y transferencia. En línea: tarjeta y transferencia vía Shopify.</p>
+                  </article>
+                </div>
 
-          <article class="contact-card">
-            <p class="contact-card__label">Personalizado</p>
-            <h2 class="contact-card__title">Piezas a tu medida</h2>
-            <p class="contact-card__text">Collares personalizados, cotizaciones y dudas sobre materiales. Atención directa y personalizada.</p>
-            <a href="https://wa.me/5213121234567?text=Hola,%20me%20gustaría%20cotizar%20una%20pieza%20personalizada" target="_blank" rel="noopener noreferrer" class="contact-card__link">Cotizar pieza</a>
-          </article>
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Personalizado</p>
+                    <h2 class="contact-card__title">Piezas a tu medida</h2>
+                    <p class="contact-card__text">Collares personalizados, cotizaciones y dudas sobre materiales. Atención directa y personalizada.</p>
+                    <a href="https://wa.me/5213121234567?text=Hola,%20me%20gustaría%20cotizar%20una%20pieza%20personalizada" target="_blank" rel="noopener noreferrer" class="contact-card__link">Cotizar pieza</a>
+                  </article>
+                </div>
 
-          <article class="contact-card">
-            <p class="contact-card__label">Redes</p>
-            <h2 class="contact-card__title">Síguenos</h2>
-            <p class="contact-card__text">Novedades, lanzamientos y piezas del día en Instagram. Respuesta rápida por WhatsApp.</p>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact-card__link">Instagram</a>
-          </article>
+                <div class="contact-carousel__slide" role="group" aria-roledescription="slide">
+                  <article class="contact-card">
+                    <p class="contact-card__label">Redes</p>
+                    <h2 class="contact-card__title">Síguenos</h2>
+                    <p class="contact-card__text">Novedades, lanzamientos y piezas del día en Instagram. Respuesta rápida por WhatsApp.</p>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact-card__link">Instagram</a>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <div class="contact-carousel__footer">
+              <button type="button" class="contact-carousel__control" id="contact-prev" aria-label="Información anterior">
+                <span aria-hidden="true">←</span>
+              </button>
+              <div class="contact-carousel__dots" id="contact-dots" role="tablist" aria-label="Seleccionar sección"></div>
+              <button type="button" class="contact-carousel__control" id="contact-next" aria-label="Siguiente información">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="contact-actions">
@@ -117,5 +145,6 @@
   <script src="js/data/store.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/contact-carousel.js"></script>
 </body>
 </html>
