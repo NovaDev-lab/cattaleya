@@ -997,7 +997,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   margin-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
 }
-.contact-actions .btn { min-width: 10rem; flex: 1 1 10rem; max-width: 16rem; }
+.contact-actions .btn {
+  flex: 0 0 auto;
+  min-width: 10rem;
+  max-width: 16rem;
+}
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start; }
 .contact-info__item { display: flex; align-items: flex-start; gap: var(--space-lg); margin-bottom: var(--space-xl); }
@@ -1020,8 +1024,24 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .contact-intro__desc { font-size: .84rem; line-height: 1.65; }
   .contact-body { padding: var(--space-lg) 0 var(--space-2xl); }
   .contact-map { height: clamp(160px, 26vh, 220px); }
-  .contact-actions { flex-direction: column; align-items: stretch; }
-  .contact-actions .btn { width: 100%; max-width: none; min-width: 0; }
+  .contact-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-md);
+  }
+  .contact-actions .btn {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: .82rem;
+    min-height: 40px;
+  }
 }
 
 /* ===== CUENTA ===== */
