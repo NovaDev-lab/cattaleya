@@ -29,8 +29,14 @@
     return !mqDesktop.matches && slides().length > 1;
   }
 
+  function slideWidth() {
+    const slide = slides()[0];
+    if (slide) return slide.getBoundingClientRect().width;
+    return viewport.getBoundingClientRect().width;
+  }
+
   function slideOffset() {
-    return viewport.getBoundingClientRect().width * index;
+    return slideWidth() * index;
   }
 
   function renderDots() {

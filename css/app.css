@@ -231,12 +231,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .contact-carousel__track {
   display: flex;
   width: 100%;
+  max-width: 100%;
   transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 .featured-carousel__slide,
 .contact-carousel__slide {
   flex: 0 0 100%;
+  flex-shrink: 0;
   min-width: 0;
   width: 100%;
   max-width: 100%;
@@ -254,6 +256,33 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   min-height: 15.5rem;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 767px) {
+  .contact-carousel__viewport {
+    overflow: visible;
+    width: 100%;
+    max-width: 100%;
+  }
+  .contact-carousel__track {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .contact-carousel__slide {
+    flex: none;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .contact-carousel__slide .contact-card {
+    max-width: none;
+    margin: 0;
+    min-height: 0;
+    width: 100%;
+  }
+  .contact-carousel__footer { display: none !important; }
 }
 .featured-carousel__footer,
 .contact-carousel__footer {
@@ -351,7 +380,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 @media (max-width: 767px) {
   .featured-carousel__slide .lookbook-item__media { aspect-ratio: 1 / 1; }
-  .contact-carousel__dots { max-width: 10rem; }
 }
 
 /* ===== CATÁLOGO (filtros horizontales) ===== */
@@ -855,6 +883,27 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   background: var(--color-off-white);
   min-width: 0;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+.contact-page > .container,
+.contact-body,
+.contact-map {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.contact-body .container {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.contact-showcase,
+.contact-carousel,
+.contact-carousel__viewport {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 .contact-intro {
   text-align: center;
@@ -894,10 +943,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .contact-body {
   padding: var(--space-2xl) 0 var(--space-3xl);
   min-width: 0;
-}
-.contact-body .container {
-  min-width: 0;
-  width: 100%;
+  overflow-x: hidden;
 }
 .contact-card {
   background: var(--color-white);
@@ -926,6 +972,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   line-height: 1.75;
   color: var(--color-text-muted);
   flex: 1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .contact-card__link {
   display: inline-block;
@@ -970,8 +1018,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .contact-intro { padding: var(--space-lg) 0 var(--space-md); }
   .contact-intro__title { font-size: clamp(1.65rem, 7vw, 2rem); }
   .contact-intro__desc { font-size: .84rem; line-height: 1.65; }
-  .contact-body { padding: var(--space-xl) 0 var(--space-2xl); }
-  .contact-map { height: clamp(200px, 32vh, 280px); }
+  .contact-body { padding: var(--space-lg) 0 var(--space-2xl); }
+  .contact-map { height: clamp(160px, 26vh, 220px); }
   .contact-actions { flex-direction: column; align-items: stretch; }
   .contact-actions .btn { width: 100%; max-width: none; min-width: 0; }
 }
